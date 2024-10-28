@@ -7,6 +7,17 @@ const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
 
 export const Colors = {
+  orangeGradient: {
+    primary: "#FB6D48",
+    secondary: "#FD8D47",
+  },
+
+  violetGradient: {
+    primary: "#673F69",
+    secondary: "#D74B76",
+
+  },
+
   light: {
     text: '#11181C',
     background: '#fff',
@@ -17,7 +28,7 @@ export const Colors = {
   },
   dark: {
     text: '#ECEDEE',
-    background: '#151718',
+    background: '#1b1b1b',
     tint: tintColorDark,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
