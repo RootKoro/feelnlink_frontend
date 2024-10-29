@@ -9,10 +9,13 @@ import { Feather } from '@expo/vector-icons'
 import Login from '@/components/auth/Login'
 import SignUp from '@/components/auth/SignUp'
 import { globalStyles } from '@/constants/GlobalStyle'
+import Steps from '@/components/auth/Steps'
 
 export default function Auth() {
 
     const [isLogin, setIsLogin] = useState(true);
+    const [steps, setSteps] = useState(1);
+
 
     return (
         <View style={styles.container}>
@@ -70,7 +73,12 @@ export default function Auth() {
             </View>
             <View style={{ flex: 7, marginTop: 30 }}>
                 {
-                    isLogin ? <Login /> : <SignUp />
+                    isLogin ?
+                        <Login /> :
+                        <>
+                            <Steps steps={steps} setSteps={setSteps} />
+                            <SignUp steps={steps} setSteps={setSteps} />
+                        </>
                 }
             </View>
         </View>

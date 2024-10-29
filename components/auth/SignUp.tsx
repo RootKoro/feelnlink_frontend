@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import { View } from 'react-native'
 import SignUpS1 from './SignUpS1'
 import SignUpS2 from './SignUpS2';
 import SignUpS3 from './SignUpS3';
 import SignUpS4 from './SignUpS4';
 
-export default function SignUp() {
-    const [steps, setSteps] = useState(1);
+
+export default function SignUp({ steps, setSteps }) {
     switch (steps) {
         case 1:
             return (
@@ -31,3 +30,4 @@ export default function SignUp() {
     }
 
 }
+

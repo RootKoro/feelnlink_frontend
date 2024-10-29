@@ -13,8 +13,7 @@ export default function SignUpS4({ setSteps }) {
     const [otp, setOtp] = useState('');
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
-            <View style={{ flex: 7, gap: 20 }}>
-                <Text>STEP 4</Text>
+            <View style={{ flex: 7, marginTop: 20 }}>
                 <View>
                     <Text style={{ fontWeight: 'normal', fontSize: 16, marginBottom: 16 }}>Nous avons envoyer un code pour la vérification au mail johndoe@mail.ex</Text>
                     <OtpInput
@@ -71,17 +70,8 @@ const styles = StyleSheet.create({
         height: 90
     },
 
-    gradientBox: {
-        height: "25%",
-        justifyContent: 'center',
-        paddingTop: 70,
-        paddingBottom: 30,
-        marginBottom: 30,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+    hPadding: {
         paddingHorizontal: Spacing.app.horizontalPadding,
-        borderBottomEndRadius: 20,
-        borderBottomStartRadius: 20
     },
 
     button: {
@@ -91,31 +81,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-
-    title: {
-        fontSize: Texts.bigTitle.size,
-        color: 'white',
-        fontWeight: '900'
-    },
-
-    normal: {
-        color: "white",
-        fontSize: Texts.normal.size
-    },
-
-    logo: {
-        width: 50,
-        height: 50
-    },
-
-    tabText: {
-        fontSize: Texts.normal.size,
-        fontWeight: 'bold',
-        color: 'white',
-        textAlign: 'center',
-    },
-
-    hPadding: {
-        paddingHorizontal: Spacing.app.horizontalPadding,
-    }
 })

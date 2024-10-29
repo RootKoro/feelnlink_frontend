@@ -6,14 +6,15 @@ import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { globalStyles } from '@/constants/GlobalStyle'
+import Checkbox from 'expo-checkbox'
 
 export default function SignUpS3({ setSteps }) {
     const [showPassword, setShowPassword] = useState(true);
+    const [isChecked, setChecked] = useState(false);
 
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
-            <View style={{ flex: 7, gap: 20 }}>
-                <Text>step 3</Text>
+            <View style={{ flex: 7, marginTop: 20 }}>
                 <View>
                     <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Mot de passe</Text>
                     <View>
@@ -53,6 +54,16 @@ export default function SignUpS3({ setSteps }) {
                         </Pressable>
                     </View>
                 </View>
+
+                <View style={styles.section}>
+                    <Checkbox
+                        style={styles.checkbox}
+                        value={isChecked}
+                        onValueChange={setChecked}
+                        color={isChecked ? Colors.orangeGradient.primary : '#D9D9D9'}
+                    />
+                    <Text style={styles.paragraph}>J’accepte les conditions générales d’utilisation</Text>
+                </View>
             </View>
 
             <View style={{ flex: 1 }}>
@@ -77,21 +88,9 @@ export default function SignUpS3({ setSteps }) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
 
-    gradientBox: {
-        height: "25%",
-        justifyContent: 'center',
-        paddingTop: 70,
-        paddingBottom: 30,
-        marginBottom: 30,
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
+    hPadding: {
         paddingHorizontal: Spacing.app.horizontalPadding,
-        borderBottomEndRadius: 20,
-        borderBottomStartRadius: 20
     },
 
     button: {
@@ -102,30 +101,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 
-    title: {
-        fontSize: Texts.bigTitle.size,
-        color: 'white',
-        fontWeight: '900'
+    section: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 20
     },
 
-    normal: {
-        color: "white",
-        fontSize: Texts.normal.size
-    },
-
-    logo: {
-        width: 50,
-        height: 50
-    },
-
-    tabText: {
+    paragraph: {
         fontSize: Texts.normal.size,
-        fontWeight: 'bold',
-        color: 'white',
-        textAlign: 'center',
     },
-
-    hPadding: {
-        paddingHorizontal: Spacing.app.horizontalPadding,
-    }
+    checkbox: {
+        marginRight: 8,
+    },
 })
