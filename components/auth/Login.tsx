@@ -30,7 +30,7 @@ export default function Login() {
                     </LinearGradient>
                 </Pressable>
             </View>
-        </View>
+        </View >
     )
 }
 
