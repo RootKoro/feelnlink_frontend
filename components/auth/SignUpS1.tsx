@@ -1,65 +1,28 @@
+import React from 'react'
 import { Colors } from '@/constants/Colors'
-import { globalStyles } from '@/constants/GlobalStyle'
 import { Spacing } from '@/constants/Spacing'
 import { Texts } from '@/constants/Titles'
-import { Feather, MaterialIcons } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-import { Link } from 'expo-router'
-import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { globalStyles } from '@/constants/GlobalStyle'
 
-export default function Login() {
-    const [showPassword, setShowPassword] = useState(true);
-    const [error, setError] = useState(false)
-
-    const login = () => {
-
-    }
-
+export default function SignUpS1({ setSteps }) {
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
             <View style={{ flex: 7, gap: 20 }}>
+                <Text>step 1</Text>
+
                 <View>
-                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Pseudonyme</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Choisissez un pseudo anonyme</Text>
                     <TextInput
                         style={globalStyles.input}
                         placeholder='Votre pseudo' />
                 </View>
-                <View>
-                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Mot de passe</Text>
-                    <View>
-                        <TextInput
-                            style={globalStyles.input}
-                            placeholder="•••••••••••"
-                            secureTextEntry={showPassword}
-                            returnKeyType="send"
-                        />
-                        <Pressable onPress={() => setShowPassword(!showPassword)} style={{ position: 'absolute', top: 12, right: 12 }} >
-                            {
-                                showPassword ?
-                                    <Feather name="eye" size={24} color="#A1A1A1" /> :
-                                    <Feather name="eye-off" size={24} color="#A1A1A1" />
-
-                            }
-                        </Pressable>
-                    </View>
-                </View>
-
-                <Link href={'/(tabs)'} style={{ textAlign: 'right', fontWeight: 'bold', fontSize: Texts.normal.size }}>Mot de passe oublié ?</Link>
-
-                {
-                    error &&
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                        <MaterialIcons name="error" size={24} color="red" />
-                        <Text style={{ color: 'red', fontWeight: 'bold' }}>
-                            Les informations fournies sont incorrects
-                        </Text>
-                    </View>
-                }
             </View>
 
             <View style={{ flex: 1 }}>
-                <Pressable onPress={login}>
+                <Pressable onPress={() => setSteps(2)}>
                     <LinearGradient
                         colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
                         style={styles.button}>
@@ -69,13 +32,13 @@ export default function Login() {
                             color: 'white',
                             textAlign: 'center',
                         }}>
-                            Se connecter
+                            Suivant
                         </Text>
                         <Feather name="arrow-right" size={24} color="white" />
                     </LinearGradient>
                 </Pressable>
             </View>
-        </View >
+        </View>
     )
 }
 

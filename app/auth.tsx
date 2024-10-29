@@ -68,7 +68,7 @@ export default function Auth() {
 
                 </View>
             </View>
-            <View style={{ flex: 7, marginTop: 20 }}>
+            <View style={{ flex: 7, marginTop: 30 }}>
                 {
                     isLogin ? <Login /> : <SignUp />
                 }
@@ -80,6 +80,7 @@ export default function Auth() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'white'
     },
 
     gradientBox: {
