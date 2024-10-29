@@ -1,13 +1,17 @@
 import { Texts } from '@/constants/Titles'
 import { LinearGradient } from 'expo-linear-gradient'
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { Spacing } from '@/constants/Spacing'
 import { StatusBar } from 'expo-status-bar'
 import { Colors } from '@/constants/Colors'
 import { Feather } from '@expo/vector-icons'
+import Login from '@/components/auth/Login'
+import SignUp from '@/components/auth/SignUp'
 
 export default function index() {
+
+    const [isLogin, setIsLogin] = useState(true);
 
     return (
         <View style={styles.container}>
@@ -17,42 +21,55 @@ export default function index() {
                     <Image source={require('@/assets/images/app-logo.png')}
                         style={styles.logo} />
                     <View>
-                        <Text style={styles.title}>Connectez-vous</Text>
+                        <Text style={styles.title}>{isLogin ? 'Connectez-vous' : 'Inscrivez-vous'} </Text>
                         <Text style={styles.normal}>Accédez à votre simplement et rapidement !</Text>
                     </View>
                 </View>
             </LinearGradient>
 
-            <View style={[styles.hPadding, { flex: 7 }]}>
-                <View>
+            <View style={styles.hPadding}>
+                <View style={{
+                    backgroundColor: "rgba(103, 63, 105, 0.2)",
+                    padding: 7,
+                    borderRadius: 10,
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    gap: 10,
+                }}>
+                    <LinearGradient
+                        colors={[Colors.violetGradient.primary, Colors.violetGradient.secondary]}
+                        style={{
+                            height: '100%',
+                            width: '50%',
+                            position: 'absolute',
+                            left: isLogin ? 6 : null,
+                            right: !isLogin ? 6 : null,
+                            top: 7,
+                            borderRadius: 10
+                        }}></LinearGradient>
+                    <Pressable onPress={() => setIsLogin(true)} style={[styles.button, {
+                        flexGrow: 1,
+                    }]}>
+
+                        <Text style={isLogin ? styles.tabText : styles.unactiveTabText}>
+                            Connexion
+                        </Text>
+
+                    </Pressable>
+                    <Pressable onPress={() => setIsLogin(false)} style={[styles.button, {
+                        flexGrow: 1
+                    }]}>
+
+                        <Text style={!isLogin ? styles.tabText : styles.unactiveTabText}>
+                            Inscription
+                        </Text>
+                    </Pressable>
 
                 </View>
             </View>
-
-            <View style={[[styles.hPadding], { flex: 1 }]}>
-                <Pressable>
-                    <LinearGradient
-                        colors={['#FB6D48', '#FD8D47']}
-                        style={{
-                            paddingVertical: 10,
-                            borderRadius: 10,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                        <Text style={{
-                            fontSize: Texts.button.size,
-                            fontWeight: 'bold',
-                            color: 'white',
-                            textAlign: 'center',
-                        }}>
-                            Se connecter
-                        </Text>
-                        <Feather name="arrow-right" size={24} color="white" />
-                    </LinearGradient>
-                </Pressable>
-            </View>
-
+            {
+                isLogin ? <Login /> : <SignUp />
+            }
         </View>
     )
 }
@@ -75,6 +92,14 @@ const styles = StyleSheet.create({
         borderBottomStartRadius: 20
     },
 
+    button: {
+        paddingVertical: 10,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
     title: {
         fontSize: Texts.bigTitle.size,
         color: 'white',
@@ -90,6 +115,20 @@ const styles = StyleSheet.create({
     logo: {
         width: 50,
         height: 50
+    },
+
+    tabText: {
+        fontSize: Texts.normal.size,
+        fontWeight: 'bold',
+        color: 'white',
+        textAlign: 'center',
+    },
+
+    unactiveTabText: {
+        fontSize: Texts.normal.size,
+        fontWeight: 'bold',
+        color: '#673F69',
+        textAlign: 'center',
     },
 
     hPadding: {
