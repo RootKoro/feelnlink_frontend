@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { globalStyles } from '@/constants/GlobalStyle'
 import Checkbox from 'expo-checkbox'
+import { Link } from 'expo-router'
 
 export default function SignUpS3({ setSteps }) {
     const [showPassword, setShowPassword] = useState(true);
@@ -14,7 +15,7 @@ export default function SignUpS3({ setSteps }) {
 
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
-            <View style={{ flex: 7, marginTop: 20 }}>
+            <View style={{ flex: 7, marginTop: 20, gap: 20 }}>
                 <View>
                     <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Mot de passe</Text>
                     <View>
@@ -62,7 +63,9 @@ export default function SignUpS3({ setSteps }) {
                         onValueChange={setChecked}
                         color={isChecked ? Colors.orangeGradient.primary : '#D9D9D9'}
                     />
-                    <Text style={styles.paragraph}>J’accepte les conditions générales d’utilisation</Text>
+                    <Text style={styles.paragraph}>J’accepte les <Link href={'/gcu'} style={{ fontWeight: 'bold' }}>conditions générales d’utilisation
+
+                    </Link> </Text>
                 </View>
             </View>
 
