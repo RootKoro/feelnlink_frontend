@@ -5,7 +5,7 @@ import { Texts } from '@/constants/Titles'
 import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { globalStyles } from '@/constants/GlobalStyle'
 import { OtpInput } from "react-native-otp-entry";
 
@@ -23,10 +23,10 @@ export default function SignUpS4({ setSteps }) {
                             containerStyle: styles.pinViewContainer,
                             pinCodeContainerStyle: styles.pinCodeContainer,
                             pinCodeTextStyle: styles.pinCodeText,
-
-
                         }}
-                        onTextChange={(text) => setOtp(text)} />
+                        onTextChange={(text) => setOtp(text)}
+                        onFilled={() => { router.replace('/(tabs)') }}
+                    />
                 </View>
             </View>
 
