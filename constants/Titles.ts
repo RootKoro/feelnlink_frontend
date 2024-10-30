@@ -10,9 +10,5 @@ export const Texts = {
 
     button: {
         size: 18
-    },
-
-    inputTitle: {
-        size: 18
     }
 };
