@@ -1,20 +1,99 @@
 import { Colors } from '@/constants/Colors'
+import { globalStyles } from '@/constants/GlobalStyle'
 import { Spacing } from '@/constants/Spacing'
 import { Texts } from '@/constants/Titles'
 import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
-import React from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Link, router } from 'expo-router'
+import React, { useState } from 'react'
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { useForm, Controller } from "react-hook-form"
+import Error from '../validation/Error'
 
 export default function Login() {
+    const [showPassword, setShowPassword] = useState(true);
+
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            pseudo: "",
+            password: "",
+        },
+    })
+    const onSubmit = (data: any) => {
+        if (data.pseudo === 'Test') {
+            return router.replace('/(tabs)')
+        }
+    }
+
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
-            <View style={{ flex: 7 }}>
-                <Text>Connexion</Text>
+            <View style={{ flex: 7, gap: 20 }}>
+                {(errors.pseudo || errors.password) && <Error message={'Pseudo ou mot de passe incorrect'} />}
+
+                <View>
+                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Pseudonyme</Text>
+
+                    <Controller
+                        control={control}
+                        rules={{
+                            required: true,
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <TextInput
+                                style={globalStyles.input}
+                                placeholder='Votre pseudo'
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                        )}
+                        name="pseudo"
+                    />
+                </View>
+                <View>
+                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Mot de passe</Text>
+
+                    <Controller
+                        control={control}
+                        rules={{
+                            required: true,
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <View>
+                                <TextInput
+                                    style={globalStyles.input}
+                                    placeholder="•••••••••••"
+                                    secureTextEntry={showPassword}
+                                    returnKeyType="send"
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    value={value}
+                                />
+                                <Pressable onPress={() => setShowPassword(!showPassword)} style={{ position: 'absolute', top: 12, right: 12 }} >
+                                    {
+                                        showPassword ?
+                                            <Feather name="eye" size={24} color="#A1A1A1" /> :
+                                            <Feather name="eye-off" size={24} color="#A1A1A1" />
+
+                                    }
+                                </Pressable>
+                            </View>
+
+                        )}
+                        name="password"
+                    />
+                </View>
+
+                <Link href={'/(tabs)'} style={{ textAlign: 'right', fontWeight: 'bold', fontSize: Texts.normal.size }}>Mot de passe oublié ?</Link>
+
             </View>
 
             <View style={{ flex: 1 }}>
-                <Pressable>
+                <Pressable onPress={handleSubmit(onSubmit)}>
                     <LinearGradient
                         colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
                         style={styles.button}>
@@ -30,7 +109,7 @@ export default function Login() {
                     </LinearGradient>
                 </Pressable>
             </View>
-        </View>
+        </View >
     )
 }
 
