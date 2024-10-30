@@ -5,12 +5,8 @@ import SignUpS3 from './SignUpS3';
 import SignUpS4 from './SignUpS4';
 
 
-export default function SignUp({ steps, setSteps }) {
-    const [registerFormData, setRegisterFormData] = useState({
-        pseudo: '',
-        email: '',
-        password: '',
-    })
+export default function SignUp({ steps, setSteps, setRegisterFormData, registerFormData }) {
+
 
     console.log(registerFormData);
 

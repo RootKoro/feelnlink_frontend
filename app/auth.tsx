@@ -16,6 +16,12 @@ export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
     const [steps, setSteps] = useState(1);
 
+    const [registerFormData, setRegisterFormData] = useState({
+        pseudo: '',
+        email: '',
+        password: '',
+    })
+
 
     return (
         <View style={styles.container}>
@@ -77,7 +83,12 @@ export default function Auth() {
                         <Login /> :
                         <>
                             <Steps steps={steps} setSteps={setSteps} />
-                            <SignUp steps={steps} setSteps={setSteps} />
+                            <SignUp
+                                steps={steps}
+                                setSteps={setSteps}
+                                setRegisterFormData={setRegisterFormData}
+                                registerFormData={registerFormData}
+                            />
                         </>
                 }
             </View>
