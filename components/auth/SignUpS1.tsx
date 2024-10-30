@@ -33,7 +33,7 @@ export default function SignUpS1({ setSteps, setRegisterFormData }) {
                 {(errors.pseudo) && <Error message={errors.pseudo.message} />}
 
                 <View>
-                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Choisissez un pseudo anonyme</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 10 }}>Choisissez un pseudonyme</Text>
 
                     <Controller
                         control={control}
