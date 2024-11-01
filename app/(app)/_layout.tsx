@@ -1,14 +1,21 @@
 import { Tabs } from "expo-router";
 import Feather from '@expo/vector-icons/Feather';
-import React from "react";
+import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Text } from 'react-native';
 import { Redirect, Stack } from 'expo-router';
 import { useSession } from '../../context/ctx';
+import { setStatusBarStyle } from "expo-status-bar";
 
 
 
 export default function AppLayout() {
+    useEffect(() => {
+        setTimeout(() => {
+            setStatusBarStyle("dark");
+        }, 0);
+    }, []);
+
     const { session, isLoading } = useSession();
 
     // You can keep the splash screen open, or render a loading screen like we do here.
