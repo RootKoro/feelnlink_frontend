@@ -25,13 +25,15 @@ export default function SignUpS4({ setSteps }) {
                             pinCodeTextStyle: styles.pinCodeText,
                         }}
                         onTextChange={(text) => setOtp(text)}
-                        onFilled={() => { router.replace('/(tabs)') }}
+                    // onFilled={() => { router.replace('/(tabs)') }}
                     />
+
+                    <Text style={{ paddingTop: 20, fontSize: 16, textAlign: 'center', textDecorationLine: 1 }}>Renvoyer le code</Text>
                 </View>
             </View>
 
-            {/* <View style={{ flex: 1 }}>
-                <Pressable href={'/(tabs)'}>
+            <View style={{ flex: 1 }}>
+                <Pressable onPress={() => { router.replace('/(tabs)') }}>
                     <LinearGradient
                         colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
                         style={styles.button}>
@@ -46,7 +48,7 @@ export default function SignUpS4({ setSteps }) {
                         <Feather name="arrow-right" size={24} color="white" />
                     </LinearGradient>
                 </Pressable>
-            </View> */}
+            </View>
         </View>
     )
 }
