@@ -9,9 +9,11 @@ import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { useForm, Controller } from "react-hook-form"
 import Error from '../validation/Error'
+import { useSession } from '@/context/ctx'
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(true);
+    const { signIn } = useSession()
 
     const {
         control,
@@ -24,9 +26,8 @@ export default function Login() {
         },
     })
     const onSubmit = (data: any) => {
-        if (data.pseudo === 'Test') {
-            return router.replace('/(tabs)')
-        }
+        signIn()
+        return router.replace('/(app)')
     }
 
     return (
@@ -44,6 +45,7 @@ export default function Login() {
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <TextInput
+                                focusable={true}
                                 style={globalStyles.input}
                                 placeholder='Votre pseudo'
                                 onBlur={onBlur}
@@ -88,7 +90,7 @@ export default function Login() {
                     />
                 </View>
 
-                <Link href={'/(tabs)'} style={{ textAlign: 'right', fontWeight: 'bold', fontSize: Texts.normal.size }}>Mot de passe oublié ?</Link>
+                <Link href={'/(app)'} style={{ textAlign: 'right', fontWeight: 'bold', fontSize: Texts.normal.size }}>Mot de passe oublié ?</Link>
 
             </View>
 

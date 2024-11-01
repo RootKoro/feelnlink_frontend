@@ -8,9 +8,11 @@ import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import { Link, router } from 'expo-router'
 import { globalStyles } from '@/constants/GlobalStyle'
 import { OtpInput } from "react-native-otp-entry";
+import { useSession } from '@/context/ctx'
 
 export default function SignUpS4({ setSteps }) {
     const [otp, setOtp] = useState('');
+    const { signIn } = useSession()
     return (
         <View style={[styles.hPadding, { flex: 7 }]}>
             <View style={{ flex: 7, marginTop: 20 }}>
@@ -33,7 +35,7 @@ export default function SignUpS4({ setSteps }) {
             </View>
 
             <View style={{ flex: 1 }}>
-                <Pressable onPress={() => { router.replace('/(tabs)') }}>
+                <Pressable onPress={() => { signIn(); router.replace('/(app)') }}>
                     <LinearGradient
                         colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
                         style={styles.button}>

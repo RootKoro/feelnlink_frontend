@@ -1,7 +1,7 @@
 import { Texts } from '@/constants/Titles'
 import { LinearGradient } from 'expo-linear-gradient'
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { StyleSheet, Text, View, Image, Pressable, Animated } from 'react-native'
 import { Spacing } from '@/constants/Spacing'
 import { StatusBar } from 'expo-status-bar'
 import { Colors } from '@/constants/Colors'
@@ -10,17 +10,38 @@ import Login from '@/components/auth/Login'
 import SignUp from '@/components/auth/SignUp'
 import { globalStyles } from '@/constants/GlobalStyle'
 import Steps from '@/components/auth/Steps'
+import { useLocalSearchParams } from 'expo-router'
 
 export default function Auth() {
 
+    const { mode } = useLocalSearchParams();
     const [isLogin, setIsLogin] = useState(true);
     const [steps, setSteps] = useState(1);
+    const slideAnim = useRef(new Animated.Value(0)).current;
+    const [tabWidth, setTabWidth] = useState(0);
 
     const [registerFormData, setRegisterFormData] = useState({
         pseudo: '',
         email: '',
         password: '',
     })
+
+    useEffect(() => {
+        if (mode === 'signup') {
+            setIsLogin(false);
+            // Set the animation to the right position
+            Animated.timing(slideAnim, {
+                toValue: 1,
+                duration: 0, // No duration for instant switch
+                useNativeDriver: true,
+            }).start();
+        }
+    }, [mode]);
+
+    const translateX = slideAnim.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, tabWidth], // Use tabWidth for responsive layout
+    });
 
 
     return (
@@ -38,26 +59,36 @@ export default function Auth() {
             </LinearGradient>
 
             <View style={styles.hPadding}>
-                <View style={{
-                    backgroundColor: "rgba(103, 63, 105, 0.2)",
-                    padding: 7,
-                    borderRadius: 10,
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    gap: 10,
-                }}>
-                    <LinearGradient
-                        colors={[Colors.violetGradient.primary, Colors.violetGradient.secondary]}
+                <View
+                    style={styles.tabContainer}
+                    onLayout={(event) => {
+                        const width = event.nativeEvent.layout.width / 2; // Get half the width for each tab
+                        setTabWidth(width); // Set the tab width
+                    }}>
+                    <Animated.View
                         style={{
                             height: '100%',
                             width: '50%',
                             position: 'absolute',
-                            left: isLogin ? 6 : null,
-                            right: !isLogin ? 6 : null,
-                            top: 7,
-                            borderRadius: 10
-                        }}></LinearGradient>
-                    <Pressable onPress={() => setIsLogin(true)} style={[globalStyles.button, {
+                            left: isLogin && 5,
+                            right: !isLogin && 5,
+                            transform: [{ translateX }],
+                            borderRadius: 10,
+                        }}
+                    >
+                        <LinearGradient
+                            colors={[Colors.violetGradient.primary, Colors.violetGradient.secondary]}
+                            style={{ height: '100%', width: '100%', borderRadius: 10 }}
+                        />
+                    </Animated.View>
+                    <Pressable onPress={() => {
+                        setIsLogin(true)
+                        Animated.timing(slideAnim, {
+                            toValue: 0,
+                            duration: 100,
+                            useNativeDriver: true,
+                        }).start();
+                    }} style={[globalStyles.button, {
                         flexGrow: 1,
                     }]}>
 
@@ -66,7 +97,14 @@ export default function Auth() {
                         </Text>
 
                     </Pressable>
-                    <Pressable onPress={() => setIsLogin(false)} style={[globalStyles.button, {
+                    <Pressable onPress={() => {
+                        setIsLogin(false)
+                        Animated.timing(slideAnim, {
+                            toValue: 1,
+                            duration: 100,
+                            useNativeDriver: true,
+                        }).start();
+                    }} style={[globalStyles.button, {
                         flexGrow: 1
                     }]}>
 
@@ -100,6 +138,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
+    },
+
+    tabContainer: {
+        backgroundColor: "rgba(103, 63, 105, 0.2)",
+        padding: 7,
+        borderRadius: 10,
+        flexDirection: 'row',
+        justifyContent: 'flex-start', // Align items to the left
+        alignItems: 'center',
+        position: 'relative',
+        gap: 10,
     },
 
     gradientBox: {
