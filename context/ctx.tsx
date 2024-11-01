@@ -35,7 +35,6 @@ export function SessionProvider({ children }: PropsWithChildren) {
                 signIn: () => {
                     // Perform sign-in logic here
                     console.log('signed in');
-
                     setSession('xxx');
                 },
                 signOut: () => {

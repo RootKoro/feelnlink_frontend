@@ -41,7 +41,7 @@ export default function Login() {
                     <Controller
                         control={control}
                         rules={{
-                            required: true,
+                            required: false,
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <TextInput
@@ -62,7 +62,7 @@ export default function Login() {
                     <Controller
                         control={control}
                         rules={{
-                            required: true,
+                            required: false,
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <View>

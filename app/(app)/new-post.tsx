@@ -1,10 +1,15 @@
+import ScreenTitle from '@/components/ui/ScreenTitle'
+import { Spacing } from '@/constants/Spacing'
 import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 
 export default function NewPostScreen() {
     return (
         <SafeAreaView>
-            <Text>new-post</Text>
+            <View style={{ paddingHorizontal: Spacing.app.horizontalPadding }}>
+                <ScreenTitle title={'Créer un post'} />
+
+            </View>
         </SafeAreaView>
     )
 }
