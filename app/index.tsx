@@ -23,7 +23,7 @@ export default function index() {
                         borderRadius: 10,
 
                     }}>
-                    <Link replace href={'/auth'} style={[globalStyles.button, { width: '100%' }]}>
+                    <Link href={'/authentication?mode=login'} style={[globalStyles.button, { width: '100%' }]}>
                         <Text style={{
                             fontSize: Texts.button.size,
                             fontWeight: 'bold',
@@ -35,7 +35,7 @@ export default function index() {
                     </Link>
                 </LinearGradient>
 
-                <Link replace href={'/auth'} style={[globalStyles.button2, { width: '100%' }]}>
+                <Link href={'/authentication?mode=signup'} style={[globalStyles.button2, { width: '100%' }]}>
                     <Text style={{
                         fontSize: Texts.button.size,
                         fontWeight: 'bold',

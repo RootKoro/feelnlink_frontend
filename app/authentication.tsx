@@ -1,6 +1,6 @@
 import { Texts } from '@/constants/Titles'
 import { LinearGradient } from 'expo-linear-gradient'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { Spacing } from '@/constants/Spacing'
 import { StatusBar } from 'expo-status-bar'
@@ -10,9 +10,11 @@ import Login from '@/components/auth/Login'
 import SignUp from '@/components/auth/SignUp'
 import { globalStyles } from '@/constants/GlobalStyle'
 import Steps from '@/components/auth/Steps'
+import { useLocalSearchParams } from 'expo-router'
 
 export default function Auth() {
 
+    const { mode } = useLocalSearchParams();
     const [isLogin, setIsLogin] = useState(true);
     const [steps, setSteps] = useState(1);
 
@@ -21,6 +23,12 @@ export default function Auth() {
         email: '',
         password: '',
     })
+
+    useEffect(() => {
+        if (mode === 'signup') {
+            setIsLogin(false);
+        }
+    }, [mode]);
 
 
     return (
