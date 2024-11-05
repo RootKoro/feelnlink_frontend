@@ -1,5 +1,4 @@
 import { Tabs } from "expo-router";
-import Feather from '@expo/vector-icons/Feather';
 import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { ActivityIndicator, Text, View } from 'react-native';
@@ -80,7 +79,6 @@ export default function AppLayout() {
                                 </Defs>
                             </Svg>
                         </View>
-
 
                     ),
                 }}

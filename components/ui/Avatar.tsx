@@ -2,9 +2,13 @@ import { User } from 'lucide-react-native'
 import React from 'react'
 import { View } from 'react-native'
 
-export default function Avatar() {
+type AvatarProps = {
+    color: string
+}
+
+export default function Avatar({ color }: AvatarProps) {
     return (
-        <View style={{ backgroundColor: '#2E94DC', width: 32, height: 32, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+        <View style={{ backgroundColor: color, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
             <User color={'#fff'} size={24} />
         </View>
     )
