@@ -27,7 +27,7 @@ export default function Login() {
     })
     const onSubmit = (data: any) => {
         signIn()
-        return router.replace('/(app)')
+        return router.replace('/inside/(tabs)')
     }
 
     return (

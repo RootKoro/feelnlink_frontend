@@ -11,7 +11,7 @@ export default function RootLayout() {
     }, 0);
 
     // have to remove next line when u done
-    // router.replace('/(app)')
+    // router.replace('/inside/(tabs)')
   }, []);
 
 

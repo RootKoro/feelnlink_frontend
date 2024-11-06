@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { ActivityIndicator, Text, View } from 'react-native';
 import { Redirect, Stack } from 'expo-router';
-import { useSession } from '../../context/ctx';
+import { useSession } from '../../../context/ctx';
 import { setStatusBarStyle } from "expo-status-bar";
 import { Bell, Cog, House, Search } from "lucide-react-native";
 import Svg, { Defs, Path, Rect, Stop, LinearGradient as SvgLinearGradient } from "react-native-svg";
@@ -42,7 +42,7 @@ export default function AppLayout() {
                 tabBarInactiveTintColor: 'white',
                 tabBarActiveTintColor: 'white',
                 tabBarBackground: () => (
-                    <LinearGradient colors={['#FB6D48', '#FD8D47']} style={{ height: "100%", borderTopLeftRadius: 10, borderTopRightRadius: 10 }} />
+                    <LinearGradient colors={['#FB6D48', '#FD8D47']} style={{ height: "100%", }} />
                 )
             }}>
             <Tabs.Screen
