@@ -5,16 +5,14 @@ import { View, Text, StyleSheet, FlatList, Dimensions, SafeAreaView, ScrollView,
 import { moods } from '@/constants/CategoriesAndMoods';
 import { Spacing } from '@/constants/Spacing';
 
-const MoodItem = ({ name, emoji }) => (
+const CategoryItem = ({ name, emoji }) => (
     <View style={styles.item}>
         <Text style={styles.emoji}>{emoji}</Text>
         <Text style={styles.name}>{name}</Text>
     </View>
 );
 
-export default function Mood() {
-
-
+export default function Categories() {
     return (
         <LinearGradient colors={[Colors.violetGradient.primary, Colors.violetGradient.secondary]} style={{ flex: 1, justifyContent: 'center' }}>
             <SafeAreaView>
@@ -28,12 +26,13 @@ export default function Mood() {
                         fontWeight: 'bold',
                         color: 'white',
 
-                    }}>Quel est votre mood en ce moment ?</Text>
+                    }}>Avant de poster choisissez une
+                        catégorie pour votre post !</Text>
 
                     <FlatList
                         data={moods}
                         renderItem={({ item }) => (
-                            <MoodItem name={item.name} emoji={item.emoji} />
+                            <CategoryItem name={item.name} emoji={item.emoji} />
                         )}
                         numColumns={3}
                         style={{
@@ -47,21 +46,17 @@ export default function Mood() {
                 </View>
 
                 {/* <ScrollView style={[styles.page, {
-                    paddingHorizontal: Spacing.app.horizontalPadding,
-                }]}>
-                    {moods.map((mood) => (
-                        <MoodItem key={mood.id} name={mood.name} emoji={mood.emoji} />
-                    ))}
-                </ScrollView> */}
+                paddingHorizontal: Spacing.app.horizontalPadding,
+            }]}>
+                {moods.map((mood) => (
+                    <MoodItem key={mood.id} name={mood.name} emoji={mood.emoji} />
+                ))}
+            </ScrollView> */}
 
             </SafeAreaView>
         </LinearGradient>
-
-
-
-    );
+    )
 }
-
 
 const styles = StyleSheet.create({
 

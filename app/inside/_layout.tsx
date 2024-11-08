@@ -14,10 +14,14 @@ export default function PostLayout() {
                     <Text style={{ color: 'white', fontSize: 18, fontWeight: 'bold' }}>Retour</Text>
                 </Pressable>
             ),
-
         }}>
             <Stack.Screen name='(tabs)' />
             <Stack.Screen name='mood' options={{
+                headerShown: true,
+                headerTitle: ""
+
+            }} />
+            <Stack.Screen name='categories' options={{
                 headerShown: true,
                 headerTitle: ""
 

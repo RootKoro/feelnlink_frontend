@@ -11,7 +11,7 @@ export default function NewPostScreen() {
 
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
             <View style={{ paddingHorizontal: Spacing.app.horizontalPadding }}>
                 <ScreenTitle title={'Créer un post'} />
             </View>
@@ -63,23 +63,21 @@ export default function NewPostScreen() {
                 </View>
 
                 <View style={{ flexDirection: 'row', marginTop: 20, gap: 10 }}>
-                    <Link href={'/inside/mood'}
-                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5 }}
+                    <Link href={'/inside/categories'}
+                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
                     >
                         <Text style={{ color: 'white', fontWeight: 'bold' }}>
                             Catégories
                         </Text>
                     </Link>
 
-                    <Pressable
-
-                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5 }}
+                    <Link href={'/inside/mood'}
+                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
                     >
                         <Text style={{ color: 'white', fontWeight: 'bold' }}>
                             Mood
                         </Text>
-                    </Pressable>
-
+                    </Link>
 
                 </View>
             </View>
