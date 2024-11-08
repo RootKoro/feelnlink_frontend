@@ -2,10 +2,8 @@ import { Colors } from '@/constants/Colors';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, Dimensions, SafeAreaView, ScrollView, Button, Pressable } from 'react-native';
-import { moods } from '@/constants/CatMoods';
+import { moods } from '@/constants/CategoriesAndMoods';
 import { Spacing } from '@/constants/Spacing';
-import { router } from 'expo-router';
-import { setStatusBarStyle } from 'expo-status-bar';
 
 const MoodItem = ({ name, emoji }) => (
     <View style={styles.item}>

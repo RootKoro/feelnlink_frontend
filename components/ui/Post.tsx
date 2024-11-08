@@ -23,7 +23,7 @@ export default function Post() {
 
             {/* post text */}
             <View style={{ gap: 10 }}>
-                <Text style={{ fontSize: 16, fontWeight: 400, gap: 10 }}>
+                <Text style={{ fontSize: 18, fontWeight: 400, gap: 10 }}>
                     Parfois, je me demande si quelqu’un se soucie vraiment de ce que je ressens
                 </Text>
 
