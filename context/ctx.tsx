@@ -11,7 +11,7 @@ const AuthContext = createContext<{
     signIn: () => null,
     signOut: () => null,
     session: null,
-    isLoading: false,
+    isLoading: true,
 });
 
 // This hook can be used to access the user info.
@@ -34,8 +34,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
             value={{
                 signIn: () => {
                     // Perform sign-in logic here
-                    console.log('signed in');
-
+                    console.log('signed in in in');
                     setSession('xxx');
                 },
                 signOut: () => {

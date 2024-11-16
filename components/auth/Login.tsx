@@ -27,7 +27,7 @@ export default function Login() {
     })
     const onSubmit = (data: any) => {
         signIn()
-        return router.replace('/(app)')
+        return router.replace('/inside/(tabs)')
     }
 
     return (
@@ -41,7 +41,7 @@ export default function Login() {
                     <Controller
                         control={control}
                         rules={{
-                            required: true,
+                            required: false,
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <TextInput
@@ -62,7 +62,7 @@ export default function Login() {
                     <Controller
                         control={control}
                         rules={{
-                            required: true,
+                            required: false,
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <View>
