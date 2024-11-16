@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
     inactive: {
         fontSize: Texts.normal.size,
-        fontWeight: 'bold',
+        fontWeight: 'semibold',
         color: 'black',
         textAlign: 'center',
     },

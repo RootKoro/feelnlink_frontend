@@ -2,6 +2,9 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import Avatar from './Avatar'
 import { Bookmark, Ellipsis, MessageSquareText, SmilePlus } from 'lucide-react-native'
+import { LinearGradient } from 'expo-linear-gradient'
+import { Texts } from '@/constants/Titles'
+import { Colors } from '@/constants/Colors'
 
 export default function Post() {
     return (
@@ -27,7 +30,13 @@ export default function Post() {
                     Parfois, je me demande si quelqu’un se soucie vraiment de ce que je ressens
                 </Text>
 
-                <Text>Dépression</Text>
+
+                <LinearGradient
+                    colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
+                    style={{ width: 90, paddingHorizontal: 5, paddingVertical: 2, borderRadius: 5 }}>
+                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Dépression</Text>
+                </LinearGradient>
+
             </View>
 
             {/* reacts */}

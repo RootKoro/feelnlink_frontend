@@ -1,5 +1,9 @@
 import ScreenTitle from '@/components/ui/ScreenTitle'
+import { Colors } from '@/constants/Colors'
 import { Spacing } from '@/constants/Spacing'
+import { Texts } from '@/constants/Titles'
+import { Feather } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient'
 import { Link, router } from 'expo-router'
 import { Globe, Lock } from 'lucide-react-native'
 import React, { useState } from 'react'
@@ -80,6 +84,22 @@ export default function NewPostScreen() {
                     </Link>
 
                 </View>
+
+                <Pressable style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+                    <LinearGradient
+                        colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
+                        style={styles.button}>
+                        <Text style={{
+                            fontSize: Texts.button.size,
+                            fontWeight: 'bold',
+                            color: 'white',
+                            textAlign: 'center',
+                        }}>
+                            Publier
+                        </Text>
+                        <Feather name="arrow-right" size={24} color="white" />
+                    </LinearGradient>
+                </Pressable>
             </View>
 
         </SafeAreaView>
@@ -110,5 +130,15 @@ const styles = StyleSheet.create({
     },
     selectedText: {
         color: '#fff',  // Texte blanc pour l'option sélectionnée
+    },
+
+
+    button: {
+        paddingVertical: 10,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: "30%"
     },
 });
