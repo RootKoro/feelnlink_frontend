@@ -5,9 +5,10 @@ import { Texts } from '@/constants/Titles'
 import { Feather } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link, router } from 'expo-router'
-import { Globe, Lock } from 'lucide-react-native'
+import { goBack } from 'expo-router/build/global-state/routing'
+import { ArrowLeft, Globe, Lock } from 'lucide-react-native'
 import React, { useState } from 'react'
-import { Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 
 export default function NewPostScreen() {
     const [postStatus, setPostStatus] = useState()
@@ -16,7 +17,8 @@ export default function NewPostScreen() {
 
     return (
         <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
-            <View style={{ paddingHorizontal: Spacing.app.horizontalPadding }}>
+            <View style={{ paddingHorizontal: Spacing.app.horizontalPadding, flexDirection: 'row', alignItems: 'center' }}>
+                <ArrowLeft color={'black'} />
                 <ScreenTitle title={'Créer un post'} />
             </View>
 
@@ -57,50 +59,51 @@ export default function NewPostScreen() {
                     </Pressable>
                 </View>
 
-                <View>
+                <ScrollView>
                     <TextInput
                         multiline={true}
                         placeholder='Exprimez ce que vous ressentez ici...'
+                        placeholderTextColor={'#727272'}
                         style={{
-                            fontSize: 22,
+                            fontSize: 16,
+                            backgroundColor: "#F3F3F3",
+                            borderRadius: 10,
+                            padding: 10
                         }} />
+                </ScrollView>
+
+                <View style={{ flexDirection: 'row', width: "100%", justifyContent: 'space-between' }}>
+
+                    <View style={{ flexDirection: 'row', gap: 10 }}>
+                        <Link href={'/inside/categories'}
+                            style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
+                        >
+                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16, }}>
+                                Catégories
+                            </Text>
+                        </Link>
+
+                        <Link href={'/inside/mood'}
+                            style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
+                        >
+                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16, }}>
+                                Mood
+                            </Text>
+                        </Link>
+
+                    </View>
+
+                    <Pressable>
+                        <LinearGradient
+                            colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
+                            style={styles.button}>
+
+                            <Feather name="arrow-right" size={24} color="white" />
+                        </LinearGradient>
+                    </Pressable>
                 </View>
-
-                <View style={{ flexDirection: 'row', marginTop: 20, gap: 10 }}>
-                    <Link href={'/inside/categories'}
-                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
-                    >
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                            Catégories
-                        </Text>
-                    </Link>
-
-                    <Link href={'/inside/mood'}
-                        style={{ backgroundColor: 'black', padding: 5, borderRadius: 5, overflow: 'hidden' }}
-                    >
-                        <Text style={{ color: 'white', fontWeight: 'bold' }}>
-                            Mood
-                        </Text>
-                    </Link>
-
-                </View>
-
-                <Pressable style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-                    <LinearGradient
-                        colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
-                        style={styles.button}>
-                        <Text style={{
-                            fontSize: Texts.button.size,
-                            fontWeight: 'bold',
-                            color: 'white',
-                            textAlign: 'center',
-                        }}>
-                            Publier
-                        </Text>
-                        <Feather name="arrow-right" size={24} color="white" />
-                    </LinearGradient>
-                </Pressable>
             </View>
+
 
         </SafeAreaView>
     )
@@ -134,11 +137,10 @@ const styles = StyleSheet.create({
 
 
     button: {
-        paddingVertical: 10,
+        padding: 10,
         borderRadius: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: "30%"
     },
 });
