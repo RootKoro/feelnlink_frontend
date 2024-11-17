@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     },
 
     tabContainer: {
-        backgroundColor: "rgba(103, 63, 105, 0.2)",
+        backgroundColor: "#F3F3F3",
         padding: 7,
         borderRadius: 10,
         flexDirection: 'row',

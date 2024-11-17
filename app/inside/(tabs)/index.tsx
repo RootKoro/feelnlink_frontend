@@ -57,7 +57,7 @@ export default function HomeScreen() {
                     </View>
 
                 </ScrollView>
-                <ScrollView style={{ height: '93%' }} showsVerticalScrollIndicator={false}>
+                <ScrollView style={{ height: '90%' }} showsVerticalScrollIndicator={false}>
                     <Post />
                     <Post />
                     <Post />
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
     inactive: {
         fontSize: Texts.normal.size,
-        fontWeight: 'semibold',
+        fontWeight: 'bold',
         color: 'black',
         textAlign: 'center',
     },

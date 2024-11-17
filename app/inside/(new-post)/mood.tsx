@@ -5,14 +5,21 @@ import { View, Text, StyleSheet, FlatList, Dimensions, SafeAreaView, ScrollView,
 import { moods } from '@/constants/CategoriesAndMoods';
 import { Spacing } from '@/constants/Spacing';
 
-const CategoryItem = ({ name, emoji }) => (
+type MoodProps = {
+    name: string,
+    emoji: any
+}
+
+const MoodItem = ({ name, emoji }: MoodProps) => (
     <View style={styles.item}>
         <Text style={styles.emoji}>{emoji}</Text>
         <Text style={styles.name}>{name}</Text>
     </View>
 );
 
-export default function Categories() {
+export default function Mood() {
+
+
     return (
         <LinearGradient colors={[Colors.violetGradient.primary, Colors.violetGradient.secondary]} style={{ flex: 1, justifyContent: 'center' }}>
             <SafeAreaView>
@@ -26,13 +33,12 @@ export default function Categories() {
                         fontWeight: 'bold',
                         color: 'white',
 
-                    }}>Avant de poster choisissez une
-                        catégorie pour votre post !</Text>
+                    }}>Quel est votre mood en ce moment ?</Text>
 
                     <FlatList
                         data={moods}
                         renderItem={({ item }) => (
-                            <CategoryItem name={item.name} emoji={item.emoji} />
+                            <MoodItem name={item.name} emoji={item.emoji} />
                         )}
                         numColumns={3}
                         style={{
@@ -46,17 +52,21 @@ export default function Categories() {
                 </View>
 
                 {/* <ScrollView style={[styles.page, {
-                paddingHorizontal: Spacing.app.horizontalPadding,
-            }]}>
-                {moods.map((mood) => (
-                    <MoodItem key={mood.id} name={mood.name} emoji={mood.emoji} />
-                ))}
-            </ScrollView> */}
+                    paddingHorizontal: Spacing.app.horizontalPadding,
+                }]}>
+                    {moods.map((mood) => (
+                        <MoodItem key={mood.id} name={mood.name} emoji={mood.emoji} />
+                    ))}
+                </ScrollView> */}
 
             </SafeAreaView>
         </LinearGradient>
-    )
+
+
+
+    );
 }
+
 
 const styles = StyleSheet.create({
 

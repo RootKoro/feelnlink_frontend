@@ -8,6 +8,7 @@ import { setStatusBarStyle } from "expo-status-bar";
 import { Bell, Cog, House, Search, User2 } from "lucide-react-native";
 
 import SpecialTabBtn from "@/components/ui/SpecialTabBtn";
+import { BlurView } from "expo-blur";
 
 
 
@@ -43,30 +44,62 @@ export default function AppLayout() {
                 tabBarInactiveTintColor: 'white',
                 tabBarActiveTintColor: 'white',
                 tabBarBackground: () => (
-                    <LinearGradient colors={['#FB6D48', '#FD8D47']} style={{ height: "100%", }} />
-                )
+                    <>
+                        {/* <BlurView
+                            intensity={20} // Adjust the blur intensity
+                            tint="light"    // Options: 'light', 'dark', 'default'
+                            style={{
+                                height: '100%',
+                                width: '100%',
+                                position: 'absolute',
+
+                            }}
+                        /> */}
+                        <LinearGradient
+                            // colors={['#FB6D48', '#FD8D47']}
+                            colors={['rgba(0, 0, 0, 0)', '#777']}
+                            locations={[0, 1]}
+                            style={{
+                                height: "100%",
+                                position: 'absolute',
+                                width: '100%',
+
+                            }}
+                        />
+                    </>
+
+                ),
+                tabBarStyle: {
+                    backgroundColor: 'transparent',
+                    position: 'absolute',
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    borderRadius: 20
+
+
+                },
             }}>
             <Tabs.Screen
                 name="index"
                 options={{
                     title: "Accueil",
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => <House color={color} fill={focused ? '#FFC0AF' : 'none'} />,
+                    // tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => <House color={color} fill={focused ? 'rgba(251, 109, 72, 0.52)' : 'none'} />,
 
                 }} />
             <Tabs.Screen
                 name="search"
                 options={{
                     title: "Recherche",
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => <Search color={color} fill={focused ? '#FFC0AF' : 'none'} />,
+                    // tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => <Search color={color} fill={focused ? 'rgba(251, 109, 72, 0.52)' : 'none'} />,
 
                 }} />
             <Tabs.Screen
                 name="new-post"
                 options={{
                     title: "",
-                    tabBarLabel: () => null,
+                    // tabBarLabel: () => null,
                     tabBarIcon: () => (
                         <SpecialTabBtn />
 
@@ -77,17 +110,17 @@ export default function AppLayout() {
                 name="notifications"
                 options={{
                     title: "Notifications",
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => <Bell color={color} fill={focused ? '#FFC0AF' : 'none'} />,
+                    // tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => <Bell color={color} fill={focused ? 'rgba(251, 109, 72, 0.52)' : 'none'} />,
 
                 }}
             />
             <Tabs.Screen
-                name="settings"
+                name="my-account"
                 options={{
-                    title: "Paramètres",
-                    tabBarLabel: () => null,
-                    tabBarIcon: ({ color, focused }) => <User2 color={color} fill={focused ? '#FFC0AF' : 'none'} />,
+                    title: "Mon compte",
+                    // tabBarLabel: () => null,
+                    tabBarIcon: ({ color, focused }) => <User2 color={color} fill={focused ? 'rgba(251, 109, 72, 0.52)' : 'none'} />,
 
                 }}
             />

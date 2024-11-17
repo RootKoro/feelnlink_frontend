@@ -8,7 +8,7 @@ import { Colors } from '@/constants/Colors'
 
 export default function Post() {
     return (
-        <View style={{ borderBottomWidth: 1, paddingBottom: 20, marginBottom: 20, borderBottomColor: "#D9D9D9", gap: 10 }}>
+        <View style={{ borderBottomWidth: 1, paddingBottom: 20, marginBottom: 20, borderBottomColor: "#D9D9D9", gap: 15 }}>
             {/* post header */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
@@ -33,8 +33,8 @@ export default function Post() {
 
                 <LinearGradient
                     colors={[Colors.orangeGradient.primary, Colors.orangeGradient.secondary]}
-                    style={{ width: 90, paddingHorizontal: 5, paddingVertical: 2, borderRadius: 5 }}>
-                    <Text style={{ color: 'white', fontWeight: 'bold' }}>Dépression</Text>
+                    style={{ width: 90, paddingHorizontal: 5, paddingVertical: 2, borderRadius: 5, }}>
+                    <Text style={{ color: 'white', textAlign: "center" }}>Dépression</Text>
                 </LinearGradient>
 
             </View>
