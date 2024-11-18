@@ -100,6 +100,7 @@ export default function AppLayout() {
                 options={{
                     title: "",
                     // tabBarLabel: () => null,
+                    tabBarStyle: { display: "none" },
                     tabBarIcon: () => (
                         <SpecialTabBtn />
 

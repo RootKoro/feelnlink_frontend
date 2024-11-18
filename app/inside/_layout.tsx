@@ -16,6 +16,7 @@ export default function PostLayout() {
             ),
         }}>
             <Stack.Screen name='(tabs)' />
+
             {/* new post */}
             <Stack.Screen name='(new-post)/mood' options={{
                 headerShown: true,
@@ -30,6 +31,11 @@ export default function PostLayout() {
             }} />
 
             {/* account */}
+            <Stack.Screen name='(my-account)/user-profile' options={{
+                headerShown: true,
+                headerTitle: ""
+
+            }} />
 
 
         </Stack>

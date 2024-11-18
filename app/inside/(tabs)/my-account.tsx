@@ -4,6 +4,7 @@ import ScreenTitle from '@/components/ui/ScreenTitle'
 import { Colors } from '@/constants/Colors'
 import { Spacing } from '@/constants/Spacing'
 import { Texts } from '@/constants/Titles'
+import { Link } from 'expo-router'
 import { Bookmark, ChevronRight, HandHelping, KeyRound, LogOut, SendHorizonal } from 'lucide-react-native'
 import React from 'react'
 import { SafeAreaView, StyleSheet, Text, View, ViewStyle, ScrollView } from 'react-native'
@@ -17,8 +18,8 @@ export default function SettingsScreen() {
             <ScrollView style={{ paddingHorizontal: Spacing.app.horizontalPadding, flex: 1, marginTop: 30 }}>
                 <View style={{ gap: 30 }}>
 
-                    <View style={{
-                        backgroundColor: "#F1F1F1",
+                    <Link href="/inside/(my-account)/user-profile" style={{
+                        backgroundColor: "#F3F3F3",
                         padding: 10,
                         borderRadius: 10,
                         flexDirection: 'row',
@@ -36,7 +37,7 @@ export default function SettingsScreen() {
                             <Text style={{ fontWeight: "bold", fontSize: 23 }}>johndoe</Text>
                             <Text style={{ fontSize: 14, color: Colors.orangeGradient.primary, borderBottomWidth: 1, borderColor: Colors.orangeGradient.primary }}>Voir mon profil</Text>
                         </View>
-                    </View>
+                    </Link>
 
                     <View style={styles.containerBox}>
                         <AccountMenuItem label={'Mes Publications'} icon={<SendHorizonal color={Colors.orangeGradient.primary} />} />
@@ -66,7 +67,7 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
     containerBox: {
-        backgroundColor: "#F1F1F1",
+        backgroundColor: "#F3F3F3",
         padding: 10,
         borderRadius: 10,
         gap: 10
